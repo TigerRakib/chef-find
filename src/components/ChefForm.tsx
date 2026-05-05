@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Chef } from "@/data/chefs";
 import { MatchResults } from "@/components/MatchResults";
 import { savePreferences, addToSearchHistory, getSearchHistory, SearchHistory, getPreferences } from "@/lib/storage";
@@ -13,24 +13,36 @@ interface FormData {
   specialRequest: string;
 }
 
-const prefs = getPreferences();
-
-const initialFormData: FormData = {
-  cuisine: prefs.defaultCuisine || "",
-  mealType: prefs.defaultMealType || "",
-  guests: prefs.defaultGuests || "",
-  budget: prefs.defaultBudget || "",
+const defaultFormData: FormData = {
+  cuisine: "",
+  mealType: "",
+  guests: "",
+  budget: "",
   specialRequest: "",
 };
 
 export function ChefForm() {
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
   const [results, setResults] = useState<Chef[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
-  const [history] = useState<SearchHistory[]>(() => getSearchHistory());
+  const [history, setHistory] = useState<SearchHistory[]>([]);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const prefs = getPreferences();
+    setFormData((prev) => ({
+      cuisine: prefs.defaultCuisine || prev.cuisine,
+      mealType: prefs.defaultMealType || prev.mealType,
+      guests: prefs.defaultGuests || prev.guests,
+      budget: prefs.defaultBudget || prev.budget,
+      specialRequest: prev.specialRequest,
+    }));
+    setHistory(getSearchHistory());
+    setHydrated(true);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -79,6 +91,8 @@ export function ChefForm() {
         specialRequest: formData.specialRequest,
         resultIds: data.map((c: Chef) => c.id),
       });
+
+      setHistory(getSearchHistory());
     } catch (err) {
       setError(err instanceof Error ? err.message : "An unexpected error occurred.");
     } finally {
@@ -87,7 +101,7 @@ export function ChefForm() {
   };
 
   const handleReset = () => {
-    setFormData(initialFormData);
+    setFormData(defaultFormData);
     setResults([]);
     setError(null);
     setHasSearched(false);
@@ -253,7 +267,7 @@ export function ChefForm() {
               "Find Chefs"
             )}
           </button>
-          {history.length > 0 && (
+          {hydrated && history.length > 0 && (
             <button
               type="button"
               onClick={() => setShowHistory(!showHistory)}

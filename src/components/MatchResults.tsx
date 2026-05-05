@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Chef } from "@/data/chefs";
 import { ChefCard } from "./ChefCard";
 import { getFavorites } from "@/lib/storage";
@@ -11,7 +12,11 @@ interface MatchResultsProps {
 }
 
 export function MatchResults({ results, loading, hasSearched }: MatchResultsProps) {
-  const favorites = getFavorites();
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  useEffect(() => {
+    setFavorites(getFavorites());
+  }, []);
 
   if (loading) {
     return (

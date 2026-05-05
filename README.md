@@ -2,7 +2,7 @@
 
 **AI-Powered Chef Matching Platform**
 
-ChefFind is a modern web application that connects you with verified personal chefs for home dining experiences. Whether you're craving authentic Bengali fish curries, handmade Italian pasta, slow-smoked BBQ, or a Michelin-star fine dining experience — ChefFind matches you with the perfect chef based on your cuisine preferences, dietary needs, budget, and occasion.
+ChefFind is a simple web page that connects you with verified personal chefs for home dining experiences. Whether someone craving authentic Bengali fish curries, handmade Italian pasta, slow-smoked BBQ, or a Michelin-star fine dining experience. ChefFind matches you with the perfect chef based on your cuisine preferences, dietary needs, budget, and occasion.
 
 ## Features
 
@@ -12,7 +12,7 @@ ChefFind is a modern web application that connects you with verified personal ch
 - **Search History** — Quick access to past searches with one-click re-use
 - **Favorites System** — Save and manage your favorite chefs across sessions
 - **Diverse Cuisines** — Bengali, Chinese, Italian, Continental, BBQ, and 25+ global cuisines
-- **Flexible Pricing** — Options ranging from budget-friendly family meals (৳500) to premium fine dining (৳10,000)
+- **Flexible Pricing** — Options ranging from budget friendly family meals (৳500) to premium fine dining (৳10,000)
 - **Responsive Design** — Mobile-first UI with safe-area support for notched phones
 - **Modern UI** — Clean interface built with Next.js and Tailwind CSS
 
@@ -56,13 +56,13 @@ chef-find/
 ### Chef Data (JSON)
 Chef data is stored in `public/data/chefs.json` instead of being hardcoded in TypeScript. This allows:
 - Easy updates without rebuilding the application
-- Non-developers can edit the chef list
+- Anyone can edit the chef list
 - Clean separation of data and logic
 
 To add or modify chefs, edit `public/data/chefs.json` directly.
 
 ### LocalStorage (`src/lib/storage.ts`)
-Client-side persistence for user-specific data:
+Client side persistence for user specific data:
 
 | Feature            | Storage Key                | Description                              |
 | ------------------ | -------------------------- | ---------------------------------------- |
@@ -196,10 +196,6 @@ The easiest way to deploy is using the [Vercel Platform](https://vercel.com/new)
 ```bash
 npm run build
 ```
-
-Then deploy the `.next` output to your preferred hosting provider.
-
-See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## License
 

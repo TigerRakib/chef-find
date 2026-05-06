@@ -2,11 +2,11 @@
 
 **AI-Powered Chef Matching Platform**
 
-ChefFind is a simple web page that connects you with verified personal chefs for home dining experiences. Whether someone craving authentic Bengali fish curries, handmade Italian pasta, slow-smoked BBQ, or a Michelin-star fine dining experience. ChefFind matches you with the perfect chef based on your cuisine preferences, dietary needs, budget, and occasion.
+ChefFind is a simple web page that connects you with verified personal chefs for home dining experiences. Whether someone craving authentic Bengali fish curries, handmade Italian pasta, slow-smoked BBQ, or a Michelin-star fine dining experience ChefFind will make it more easier than before. ChefFind matches you with the perfect chef based on your cuisine preferences, dietary needs, budget, and occasion.
 
 ## Features
 
-- **100+ Verified Chefs** — Diverse global cuisines and specialized dietary expertise for complex matching
+- **100+ Sample Chefs** — Diverse global cuisines and specialized dietary expertise for complex matching
 - **Smart Matching** — Advanced scoring algorithm ranks chefs by cuisine fit, budget, guest count, and special requests
 - **Persistent Preferences** — Default selections saved in LocalStorage for faster repeat searches
 - **Search History** — Quick access to past searches with one-click re-use

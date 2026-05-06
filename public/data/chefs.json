@@ -15,6 +15,7 @@
     ],
     "rating": 4.8,
     "pricePerSession": 4000,
+    "currency": "BDT",
     "bio": "A culinary artist with a flair for Filipino fusion, creating unforgettable dining experiences.",
     "completedBookings": 137
   },
@@ -35,7 +36,8 @@
     "rating": 4.5,
     "pricePerSession": 2500,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 112
+    "completedBookings": 112,
+    "currency": "BDT"
   },
   {
     "id": 3,
@@ -53,7 +55,8 @@
     "rating": 4.5,
     "pricePerSession": 5000,
     "bio": "Trained in prestigious kitchens across Kolkata, specializing in modern techniques with traditional roots.",
-    "completedBookings": 221
+    "completedBookings": 221,
+    "currency": "BDT"
   },
   {
     "id": 4,
@@ -71,7 +74,8 @@
     "rating": 4.9,
     "pricePerSession": 3000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 162
+    "completedBookings": 162,
+    "currency": "BDT"
   },
   {
     "id": 5,
@@ -91,7 +95,8 @@
     "rating": 4.1,
     "pricePerSession": 5000,
     "bio": "Trained in prestigious kitchens across Guangdong, specializing in modern techniques with traditional roots.",
-    "completedBookings": 308
+    "completedBookings": 308,
+    "currency": "BDT"
   },
   {
     "id": 6,
@@ -110,7 +115,8 @@
     "rating": 4.6,
     "pricePerSession": 1500,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 190
+    "completedBookings": 190,
+    "currency": "BDT"
   },
   {
     "id": 7,
@@ -130,7 +136,8 @@
     "rating": 5,
     "pricePerSession": 10000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 57
+    "completedBookings": 57,
+    "currency": "BDT"
   },
   {
     "id": 8,
@@ -149,7 +156,8 @@
     "rating": 4.4,
     "pricePerSession": 10000,
     "bio": "Combines classical training with bold, contemporary flavors to surprise and delight.",
-    "completedBookings": 116
+    "completedBookings": 116,
+    "currency": "BDT"
   },
   {
     "id": 9,
@@ -166,7 +174,8 @@
     "rating": 4.5,
     "pricePerSession": 4000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 294
+    "completedBookings": 294,
+    "currency": "BDT"
   },
   {
     "id": 10,
@@ -183,7 +192,8 @@
     "rating": 4.3,
     "pricePerSession": 1800,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 124
+    "completedBookings": 124,
+    "currency": "BDT"
   },
   {
     "id": 11,
@@ -202,7 +212,8 @@
     "rating": 4.6,
     "pricePerSession": 6000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 190
+    "completedBookings": 190,
+    "currency": "BDT"
   },
   {
     "id": 12,
@@ -219,7 +230,8 @@
     "rating": 4.7,
     "pricePerSession": 6000,
     "bio": "Trained in prestigious kitchens across Addis Ababa, specializing in modern techniques with traditional roots.",
-    "completedBookings": 95
+    "completedBookings": 95,
+    "currency": "BDT"
   },
   {
     "id": 13,
@@ -237,7 +249,8 @@
     "rating": 4.8,
     "pricePerSession": 800,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 32
+    "completedBookings": 32,
+    "currency": "BDT"
   },
   {
     "id": 14,
@@ -255,7 +268,8 @@
     "rating": 4.8,
     "pricePerSession": 1800,
     "bio": "Trained in prestigious kitchens across Mexico City, specializing in modern techniques with traditional roots.",
-    "completedBookings": 21
+    "completedBookings": 21,
+    "currency": "BDT"
   },
   {
     "id": 15,
@@ -273,7 +287,8 @@
     "rating": 4.5,
     "pricePerSession": 6000,
     "bio": "Master of Family Meals, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 264
+    "completedBookings": 264,
+    "currency": "BDT"
   },
   {
     "id": 16,
@@ -292,7 +307,8 @@
     "rating": 4.8,
     "pricePerSession": 500,
     "bio": "Trained in prestigious kitchens across Beirut, specializing in modern techniques with traditional roots.",
-    "completedBookings": 113
+    "completedBookings": 113,
+    "currency": "BDT"
   },
   {
     "id": 17,
@@ -309,7 +325,8 @@
     "rating": 4.6,
     "pricePerSession": 2500,
     "bio": "Born and raised in Lima, brings authentic flavors to every dish.",
-    "completedBookings": 286
+    "completedBookings": 286,
+    "currency": "BDT"
   },
   {
     "id": 18,
@@ -326,7 +343,8 @@
     "rating": 4.5,
     "pricePerSession": 6000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 28
+    "completedBookings": 28,
+    "currency": "BDT"
   },
   {
     "id": 19,
@@ -345,7 +363,8 @@
     "rating": 4.1,
     "pricePerSession": 6000,
     "bio": "Master of Private Chef, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 219
+    "completedBookings": 219,
+    "currency": "BDT"
   },
   {
     "id": 20,
@@ -363,7 +382,8 @@
     "rating": 4.1,
     "pricePerSession": 3000,
     "bio": "Born and raised in Hanoi, brings authentic flavors to every dish.",
-    "completedBookings": 293
+    "completedBookings": 293,
+    "currency": "BDT"
   },
   {
     "id": 21,
@@ -382,7 +402,8 @@
     "rating": 4.6,
     "pricePerSession": 8000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 241
+    "completedBookings": 241,
+    "currency": "BDT"
   },
   {
     "id": 22,
@@ -401,7 +422,8 @@
     "rating": 4.8,
     "pricePerSession": 8000,
     "bio": "Born and raised in Bangkok, brings authentic flavors to every dish.",
-    "completedBookings": 148
+    "completedBookings": 148,
+    "currency": "BDT"
   },
   {
     "id": 23,
@@ -418,7 +440,8 @@
     "rating": 4.5,
     "pricePerSession": 5000,
     "bio": "Combines classical training with bold, contemporary flavors to surprise and delight.",
-    "completedBookings": 36
+    "completedBookings": 36,
+    "currency": "BDT"
   },
   {
     "id": 24,
@@ -435,7 +458,8 @@
     "rating": 4.9,
     "pricePerSession": 5000,
     "bio": "A culinary artist with a flair for Continental fusion, creating unforgettable dining experiences.",
-    "completedBookings": 56
+    "completedBookings": 56,
+    "currency": "BDT"
   },
   {
     "id": 25,
@@ -452,7 +476,8 @@
     "rating": 4.4,
     "pricePerSession": 1500,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 249
+    "completedBookings": 249,
+    "currency": "BDT"
   },
   {
     "id": 26,
@@ -472,7 +497,8 @@
     "rating": 4.9,
     "pricePerSession": 4000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 252
+    "completedBookings": 252,
+    "currency": "BDT"
   },
   {
     "id": 27,
@@ -491,7 +517,8 @@
     "rating": 4.7,
     "pricePerSession": 1800,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 195
+    "completedBookings": 195,
+    "currency": "BDT"
   },
   {
     "id": 28,
@@ -508,7 +535,8 @@
     "rating": 4.2,
     "pricePerSession": 1200,
     "bio": "Born and raised in Lima, brings authentic flavors to every dish.",
-    "completedBookings": 185
+    "completedBookings": 185,
+    "currency": "BDT"
   },
   {
     "id": 29,
@@ -527,7 +555,8 @@
     "rating": 4.4,
     "pricePerSession": 1200,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Japanese cuisine.",
-    "completedBookings": 102
+    "completedBookings": 102,
+    "currency": "BDT"
   },
   {
     "id": 30,
@@ -544,7 +573,8 @@
     "rating": 4.2,
     "pricePerSession": 500,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 90
+    "completedBookings": 90,
+    "currency": "BDT"
   },
   {
     "id": 31,
@@ -562,7 +592,8 @@
     "rating": 4.8,
     "pricePerSession": 1000,
     "bio": "Born and raised in Athens, brings authentic flavors to every dish.",
-    "completedBookings": 308
+    "completedBookings": 308,
+    "currency": "BDT"
   },
   {
     "id": 32,
@@ -581,7 +612,8 @@
     "rating": 4.6,
     "pricePerSession": 1200,
     "bio": "Trained in prestigious kitchens across Paris, specializing in modern techniques with traditional roots.",
-    "completedBookings": 281
+    "completedBookings": 281,
+    "currency": "BDT"
   },
   {
     "id": 33,
@@ -600,7 +632,8 @@
     "rating": 5,
     "pricePerSession": 2500,
     "bio": "A culinary artist with a flair for Japanese fusion, creating unforgettable dining experiences.",
-    "completedBookings": 124
+    "completedBookings": 124,
+    "currency": "BDT"
   },
   {
     "id": 34,
@@ -618,7 +651,8 @@
     "rating": 4.5,
     "pricePerSession": 2500,
     "bio": "Master of Fine Dining, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 294
+    "completedBookings": 294,
+    "currency": "BDT"
   },
   {
     "id": 35,
@@ -636,7 +670,8 @@
     "rating": 4.8,
     "pricePerSession": 8000,
     "bio": "Born and raised in Naples, brings authentic flavors to every dish.",
-    "completedBookings": 173
+    "completedBookings": 173,
+    "currency": "BDT"
   },
   {
     "id": 36,
@@ -656,7 +691,8 @@
     "rating": 4.5,
     "pricePerSession": 6000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 30
+    "completedBookings": 30,
+    "currency": "BDT"
   },
   {
     "id": 37,
@@ -676,7 +712,8 @@
     "rating": 4.6,
     "pricePerSession": 3000,
     "bio": "Trained in prestigious kitchens across Sao Paulo, specializing in modern techniques with traditional roots.",
-    "completedBookings": 125
+    "completedBookings": 125,
+    "currency": "BDT"
   },
   {
     "id": 38,
@@ -696,7 +733,8 @@
     "rating": 4.1,
     "pricePerSession": 6000,
     "bio": "A culinary artist with a flair for American fusion, creating unforgettable dining experiences.",
-    "completedBookings": 144
+    "completedBookings": 144,
+    "currency": "BDT"
   },
   {
     "id": 39,
@@ -714,7 +752,8 @@
     "rating": 4.6,
     "pricePerSession": 8000,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Ethiopian cuisine.",
-    "completedBookings": 62
+    "completedBookings": 62,
+    "currency": "BDT"
   },
   {
     "id": 40,
@@ -732,7 +771,8 @@
     "rating": 4.7,
     "pricePerSession": 2500,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 72
+    "completedBookings": 72,
+    "currency": "BDT"
   },
   {
     "id": 41,
@@ -749,7 +789,8 @@
     "rating": 4.5,
     "pricePerSession": 6000,
     "bio": "Master of Gluten-Free, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 158
+    "completedBookings": 158,
+    "currency": "BDT"
   },
   {
     "id": 42,
@@ -768,7 +809,8 @@
     "rating": 4.8,
     "pricePerSession": 1800,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 126
+    "completedBookings": 126,
+    "currency": "BDT"
   },
   {
     "id": 43,
@@ -786,7 +828,8 @@
     "rating": 4.2,
     "pricePerSession": 8000,
     "bio": "Combines classical training with bold, contemporary flavors to surprise and delight.",
-    "completedBookings": 273
+    "completedBookings": 273,
+    "currency": "BDT"
   },
   {
     "id": 44,
@@ -803,7 +846,8 @@
     "rating": 4.5,
     "pricePerSession": 4000,
     "bio": "Trained in prestigious kitchens across Addis Ababa, specializing in modern techniques with traditional roots.",
-    "completedBookings": 166
+    "completedBookings": 166,
+    "currency": "BDT"
   },
   {
     "id": 45,
@@ -821,7 +865,8 @@
     "rating": 4.9,
     "pricePerSession": 800,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 271
+    "completedBookings": 271,
+    "currency": "BDT"
   },
   {
     "id": 46,
@@ -840,7 +885,8 @@
     "rating": 4.2,
     "pricePerSession": 8000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 198
+    "completedBookings": 198,
+    "currency": "BDT"
   },
   {
     "id": 47,
@@ -858,7 +904,8 @@
     "rating": 4.3,
     "pricePerSession": 5000,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 250
+    "completedBookings": 250,
+    "currency": "BDT"
   },
   {
     "id": 48,
@@ -876,7 +923,8 @@
     "rating": 4.2,
     "pricePerSession": 5000,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 76
+    "completedBookings": 76,
+    "currency": "BDT"
   },
   {
     "id": 49,
@@ -895,7 +943,8 @@
     "rating": 4.2,
     "pricePerSession": 5000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 100
+    "completedBookings": 100,
+    "currency": "BDT"
   },
   {
     "id": 50,
@@ -914,7 +963,8 @@
     "rating": 4.3,
     "pricePerSession": 800,
     "bio": "Trained in prestigious kitchens across Beirut, specializing in modern techniques with traditional roots.",
-    "completedBookings": 230
+    "completedBookings": 230,
+    "currency": "BDT"
   },
   {
     "id": 51,
@@ -932,7 +982,8 @@
     "rating": 4.7,
     "pricePerSession": 1500,
     "bio": "Born and raised in Paris, brings authentic flavors to every dish.",
-    "completedBookings": 205
+    "completedBookings": 205,
+    "currency": "BDT"
   },
   {
     "id": 52,
@@ -951,7 +1002,8 @@
     "rating": 4.3,
     "pricePerSession": 500,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 101
+    "completedBookings": 101,
+    "currency": "BDT"
   },
   {
     "id": 53,
@@ -969,7 +1021,8 @@
     "rating": 4.9,
     "pricePerSession": 1000,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Moroccan cuisine.",
-    "completedBookings": 145
+    "completedBookings": 145,
+    "currency": "BDT"
   },
   {
     "id": 54,
@@ -986,7 +1039,8 @@
     "rating": 4.9,
     "pricePerSession": 1800,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 247
+    "completedBookings": 247,
+    "currency": "BDT"
   },
   {
     "id": 55,
@@ -1003,7 +1057,8 @@
     "rating": 4.3,
     "pricePerSession": 5000,
     "bio": "A culinary artist with a flair for Ethiopian fusion, creating unforgettable dining experiences.",
-    "completedBookings": 231
+    "completedBookings": 231,
+    "currency": "BDT"
   },
   {
     "id": 56,
@@ -1021,7 +1076,8 @@
     "rating": 4.6,
     "pricePerSession": 4000,
     "bio": "Trained in prestigious kitchens across Sao Paulo, specializing in modern techniques with traditional roots.",
-    "completedBookings": 264
+    "completedBookings": 264,
+    "currency": "BDT"
   },
   {
     "id": 57,
@@ -1040,7 +1096,8 @@
     "rating": 4.4,
     "pricePerSession": 1800,
     "bio": "Born and raised in Naples, brings authentic flavors to every dish.",
-    "completedBookings": 99
+    "completedBookings": 99,
+    "currency": "BDT"
   },
   {
     "id": 58,
@@ -1058,7 +1115,8 @@
     "rating": 4.3,
     "pricePerSession": 1500,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 31
+    "completedBookings": 31,
+    "currency": "BDT"
   },
   {
     "id": 59,
@@ -1077,7 +1135,8 @@
     "rating": 4.8,
     "pricePerSession": 1200,
     "bio": "Master of Sichuan, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 42
+    "completedBookings": 42,
+    "currency": "BDT"
   },
   {
     "id": 60,
@@ -1096,7 +1155,8 @@
     "rating": 4,
     "pricePerSession": 2000,
     "bio": "Trained in prestigious kitchens across Beirut, specializing in modern techniques with traditional roots.",
-    "completedBookings": 281
+    "completedBookings": 281,
+    "currency": "BDT"
   },
   {
     "id": 61,
@@ -1116,7 +1176,8 @@
     "rating": 4.3,
     "pricePerSession": 1800,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 264
+    "completedBookings": 264,
+    "currency": "BDT"
   },
   {
     "id": 62,
@@ -1134,7 +1195,8 @@
     "rating": 4.6,
     "pricePerSession": 3000,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 52
+    "completedBookings": 52,
+    "currency": "BDT"
   },
   {
     "id": 63,
@@ -1152,7 +1214,8 @@
     "rating": 4.8,
     "pricePerSession": 1000,
     "bio": "Master of Fermentation, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 123
+    "completedBookings": 123,
+    "currency": "BDT"
   },
   {
     "id": 64,
@@ -1169,7 +1232,8 @@
     "rating": 4.4,
     "pricePerSession": 4000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 17
+    "completedBookings": 17,
+    "currency": "BDT"
   },
   {
     "id": 65,
@@ -1188,7 +1252,8 @@
     "rating": 4.4,
     "pricePerSession": 8000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 188
+    "completedBookings": 188,
+    "currency": "BDT"
   },
   {
     "id": 66,
@@ -1206,7 +1271,8 @@
     "rating": 4.2,
     "pricePerSession": 4000,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 308
+    "completedBookings": 308,
+    "currency": "BDT"
   },
   {
     "id": 67,
@@ -1225,7 +1291,8 @@
     "rating": 4.6,
     "pricePerSession": 500,
     "bio": "Master of Halal, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 17
+    "completedBookings": 17,
+    "currency": "BDT"
   },
   {
     "id": 68,
@@ -1243,7 +1310,8 @@
     "rating": 4.6,
     "pricePerSession": 6000,
     "bio": "Master of Charcuterie, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 15
+    "completedBookings": 15,
+    "currency": "BDT"
   },
   {
     "id": 69,
@@ -1261,7 +1329,8 @@
     "rating": 4.4,
     "pricePerSession": 1200,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 55
+    "completedBookings": 55,
+    "currency": "BDT"
   },
   {
     "id": 70,
@@ -1279,7 +1348,8 @@
     "rating": 4.7,
     "pricePerSession": 1500,
     "bio": "Trained in prestigious kitchens across Naples, specializing in modern techniques with traditional roots.",
-    "completedBookings": 65
+    "completedBookings": 65,
+    "currency": "BDT"
   },
   {
     "id": 71,
@@ -1299,7 +1369,8 @@
     "rating": 4.4,
     "pricePerSession": 10000,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 296
+    "completedBookings": 296,
+    "currency": "BDT"
   },
   {
     "id": 72,
@@ -1317,7 +1388,8 @@
     "rating": 4.5,
     "pricePerSession": 1200,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Caribbean cuisine.",
-    "completedBookings": 237
+    "completedBookings": 237,
+    "currency": "BDT"
   },
   {
     "id": 73,
@@ -1336,7 +1408,8 @@
     "rating": 4.5,
     "pricePerSession": 5000,
     "bio": "Trained in prestigious kitchens across Seoul, specializing in modern techniques with traditional roots.",
-    "completedBookings": 271
+    "completedBookings": 271,
+    "currency": "BDT"
   },
   {
     "id": 74,
@@ -1354,7 +1427,8 @@
     "rating": 4.5,
     "pricePerSession": 8000,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 128
+    "completedBookings": 128,
+    "currency": "BDT"
   },
   {
     "id": 75,
@@ -1374,7 +1448,8 @@
     "rating": 4.6,
     "pricePerSession": 1200,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 226
+    "completedBookings": 226,
+    "currency": "BDT"
   },
   {
     "id": 76,
@@ -1393,7 +1468,8 @@
     "rating": 4.1,
     "pricePerSession": 1000,
     "bio": "Combines classical training with bold, contemporary flavors to surprise and delight.",
-    "completedBookings": 142
+    "completedBookings": 142,
+    "currency": "BDT"
   },
   {
     "id": 77,
@@ -1412,7 +1488,8 @@
     "rating": 4.7,
     "pricePerSession": 5000,
     "bio": "Born and raised in Seoul, brings authentic flavors to every dish.",
-    "completedBookings": 166
+    "completedBookings": 166,
+    "currency": "BDT"
   },
   {
     "id": 78,
@@ -1429,7 +1506,8 @@
     "rating": 5,
     "pricePerSession": 500,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Indian cuisine.",
-    "completedBookings": 138
+    "completedBookings": 138,
+    "currency": "BDT"
   },
   {
     "id": 79,
@@ -1447,7 +1525,8 @@
     "rating": 4.7,
     "pricePerSession": 1500,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 93
+    "completedBookings": 93,
+    "currency": "BDT"
   },
   {
     "id": 80,
@@ -1466,7 +1545,8 @@
     "rating": 4.4,
     "pricePerSession": 5000,
     "bio": "Trained in prestigious kitchens across Kingston, specializing in modern techniques with traditional roots.",
-    "completedBookings": 293
+    "completedBookings": 293,
+    "currency": "BDT"
   },
   {
     "id": 81,
@@ -1485,7 +1565,8 @@
     "rating": 4.5,
     "pricePerSession": 1000,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Continental cuisine.",
-    "completedBookings": 64
+    "completedBookings": 64,
+    "currency": "BDT"
   },
   {
     "id": 82,
@@ -1502,7 +1583,8 @@
     "rating": 4.3,
     "pricePerSession": 1200,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 263
+    "completedBookings": 263,
+    "currency": "BDT"
   },
   {
     "id": 83,
@@ -1520,7 +1602,8 @@
     "rating": 4.7,
     "pricePerSession": 1500,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Korean cuisine.",
-    "completedBookings": 158
+    "completedBookings": 158,
+    "currency": "BDT"
   },
   {
     "id": 84,
@@ -1539,7 +1622,8 @@
     "rating": 4.8,
     "pricePerSession": 1000,
     "bio": "A culinary artist with a flair for French fusion, creating unforgettable dining experiences.",
-    "completedBookings": 238
+    "completedBookings": 238,
+    "currency": "BDT"
   },
   {
     "id": 85,
@@ -1559,7 +1643,8 @@
     "rating": 4.4,
     "pricePerSession": 1500,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 54
+    "completedBookings": 54,
+    "currency": "BDT"
   },
   {
     "id": 86,
@@ -1577,7 +1662,8 @@
     "rating": 4.6,
     "pricePerSession": 1200,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 258
+    "completedBookings": 258,
+    "currency": "BDT"
   },
   {
     "id": 87,
@@ -1595,7 +1681,8 @@
     "rating": 4.9,
     "pricePerSession": 1500,
     "bio": "A culinary artist with a flair for Moroccan fusion, creating unforgettable dining experiences.",
-    "completedBookings": 72
+    "completedBookings": 72,
+    "currency": "BDT"
   },
   {
     "id": 88,
@@ -1615,7 +1702,8 @@
     "rating": 4.1,
     "pricePerSession": 5000,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 173
+    "completedBookings": 173,
+    "currency": "BDT"
   },
   {
     "id": 89,
@@ -1635,7 +1723,8 @@
     "rating": 4.1,
     "pricePerSession": 2500,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 104
+    "completedBookings": 104,
+    "currency": "BDT"
   },
   {
     "id": 90,
@@ -1652,7 +1741,8 @@
     "rating": 4.5,
     "pricePerSession": 6000,
     "bio": "Believes food is love, and every plate tells a story of heritage and innovation.",
-    "completedBookings": 71
+    "completedBookings": 71,
+    "currency": "BDT"
   },
   {
     "id": 91,
@@ -1671,7 +1761,8 @@
     "rating": 4.6,
     "pricePerSession": 1500,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 263
+    "completedBookings": 263,
+    "currency": "BDT"
   },
   {
     "id": 92,
@@ -1689,7 +1780,8 @@
     "rating": 4.8,
     "pricePerSession": 5000,
     "bio": "Master of Wine Pairing, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 19
+    "completedBookings": 19,
+    "currency": "BDT"
   },
   {
     "id": 93,
@@ -1707,7 +1799,8 @@
     "rating": 4.9,
     "pricePerSession": 3000,
     "bio": "Trained in prestigious kitchens across Addis Ababa, specializing in modern techniques with traditional roots.",
-    "completedBookings": 269
+    "completedBookings": 269,
+    "currency": "BDT"
   },
   {
     "id": 94,
@@ -1725,7 +1818,8 @@
     "rating": 4.6,
     "pricePerSession": 1800,
     "bio": "From street food stalls to fine dining tables, brings a unique perspective to Indonesian cuisine.",
-    "completedBookings": 95
+    "completedBookings": 95,
+    "currency": "BDT"
   },
   {
     "id": 95,
@@ -1744,7 +1838,8 @@
     "rating": 4.1,
     "pricePerSession": 1000,
     "bio": "Dedicated to making every meal a celebration, whether intimate or grand.",
-    "completedBookings": 173
+    "completedBookings": 173,
+    "currency": "BDT"
   },
   {
     "id": 96,
@@ -1761,7 +1856,8 @@
     "rating": 4.8,
     "pricePerSession": 500,
     "bio": "Master of Zero-Waste Cooking, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 183
+    "completedBookings": 183,
+    "currency": "BDT"
   },
   {
     "id": 97,
@@ -1779,7 +1875,8 @@
     "rating": 4.5,
     "pricePerSession": 10000,
     "bio": "Born and raised in Seoul, brings authentic flavors to every dish.",
-    "completedBookings": 263
+    "completedBookings": 263,
+    "currency": "BDT"
   },
   {
     "id": 98,
@@ -1797,7 +1894,8 @@
     "rating": 4.4,
     "pricePerSession": 10000,
     "bio": "Passionate about sustainable cooking and locally sourced ingredients.",
-    "completedBookings": 78
+    "completedBookings": 78,
+    "currency": "BDT"
   },
   {
     "id": 99,
@@ -1815,7 +1913,8 @@
     "rating": 4.8,
     "pricePerSession": 6000,
     "bio": "Expert in crafting meals that cater to all dietary needs without compromising on taste.",
-    "completedBookings": 68
+    "completedBookings": 68,
+    "currency": "BDT"
   },
   {
     "id": 100,
@@ -1834,6 +1933,7 @@
     "rating": 4.3,
     "pricePerSession": 1500,
     "bio": "Master of Zero-Waste Cooking, with years of experience cooking for families and celebrities alike.",
-    "completedBookings": 78
+    "completedBookings": 78,
+    "currency": "BDT"
   }
 ]

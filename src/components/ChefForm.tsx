@@ -220,10 +220,10 @@ export function ChefForm() {
               required
             >
               <option value="" disabled>Select budget</option>
-              <option value="500-1000">৳500–৳1,000</option>
-              <option value="1000-2000">৳1,000–৳2,000</option>
-              <option value="2000-5000">৳2,000–৳5,000</option>
-              <option value="5000+">৳5,000+</option>
+              <option value="500-1000">500-1000 BDT</option>
+              <option value="1000-2000">1000-2000 BDT</option>
+              <option value="2000-5000">2000-5000 BDT</option>
+              <option value="5000+">5000+ BDT</option>
             </select>
           </div>
         </div>
@@ -309,10 +309,10 @@ export function ChefForm() {
                     <p className="text-sm font-medium text-gray-900">
                       {search.cuisine} · {search.mealType}
                     </p>
-                    <p className="text-xs text-gray-500 mt-0.5">
-                      {search.guests} guests · {search.budget}
-                      {search.specialRequest && ` · ${search.specialRequest}`}
-                    </p>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                       {search.guests} guests · {search.budget}
+                       {search.specialRequest && ` · ${search.specialRequest}`}
+                     </p>
                   </div>
                   <span className="text-xs text-gray-400">{formatTime(search.timestamp)}</span>
                 </div>

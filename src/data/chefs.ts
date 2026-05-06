@@ -7,6 +7,7 @@ export interface Chef {
   specialty: string[];
   rating: number;
   pricePerSession: number;
+  currency: string;
   bio: string;
   completedBookings: number;
 }

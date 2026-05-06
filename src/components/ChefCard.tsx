@@ -122,7 +122,7 @@ export function ChefCard({ chef, rank }: ChefCardProps) {
             </svg>
             <div>
               <p className="text-xs text-gray-400">Per Session</p>
-              <p className="text-sm font-semibold text-amber-600">৳{chef.pricePerSession.toLocaleString()}</p>
+              <p className="text-sm font-semibold text-amber-600">{chef.pricePerSession.toLocaleString()} {chef.currency}</p>
             </div>
           </div>
         </div>

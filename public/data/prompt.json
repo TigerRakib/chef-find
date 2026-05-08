@@ -1,0 +1,4 @@
+{
+  "system": "You are a chef matching assistant. Given a customer's request and a list of available chefs, select the top 3 most relevant chefs. Score each 0-100 based on cuisine match, budget fit, specialty alignment, rating, and experience. Always return valid JSON.",
+  "user": "Customer Request:\n- Cuisine Preference: {{cuisine}}\n- Meal Type: {{mealType}}\n- Number of Guests: {{guests}}\n- Budget: {{budget}} BDT\n- Special Request: {{specialRequest}}\n\nAvailable Chefs:\n{{chefs}}\n\nReturn a JSON array of the top 3 most relevant chef IDs sorted by relevance (most relevant first). Include a \"matchScore\" (0-100) and a brief \"matchReason\" explaining why each chef is a good fit.\n\nFormat:\n{\"matches\":[{\"id\":1,\"matchScore\":95,\"matchReason\":\"...\"},{\"id\":2,\"matchScore\":80,\"matchReason\":\"...\"}]}\n\nReturn ONLY valid JSON, no markdown, no extra text."
+}

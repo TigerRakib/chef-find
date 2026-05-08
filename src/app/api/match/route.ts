@@ -25,37 +25,24 @@ interface MatchRequest {
   specialRequest: string;
 }
 
+interface PromptTemplate {
+  system: string;
+  user: string;
+}
+
 function loadChefs(): Chef[] {
   const filePath = path.join(process.cwd(), "public", "data", "chefs.json");
   const data = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(data);
 }
 
-function buildPrompt(chefs: Chef[], request: MatchRequest): string {
-  const chefDescriptions = chefs.map(
-    (c) =>
-      `ID:${c.id} | ${c.name} | Cuisine: ${c.cuisine.join(", ")} | Experience: ${c.experience} yrs | Specialty: ${c.specialty.join(", ")} | Rating: ${c.rating}★ | Price: ৳${c.pricePerSession}/session | Bio: ${c.bio}`
-  ).join("\n");
-
-  return `You are a chef matching assistant. Given a customer's request, select the most relevant chefs from the list below.
-
-Customer Request:
-- Cuisine Preference: ${request.cuisine}
-- Meal Type: ${request.mealType}
-- Number of Guests: ${request.guests}
-- Budget: ${request.budget} BDT
-- Special Request: ${request.specialRequest || "None"}
-
-Available Chefs:
-${chefDescriptions}
-
-Return a JSON array of the top 3 most relevant chef IDs sorted by relevance (most relevant first). Include a "matchScore" (0-100) and a brief "matchReason" explaining why each chef is a good fit.
-
-Format:
-{"matches":[{"id":1,"matchScore":95,"matchReason":"..."},{"id":2,"matchScore":80,"matchReason":"..."}]}
-
-Return ONLY valid JSON, no markdown, no extra text.`;
+function loadPrompt(): PromptTemplate {
+  const filePath = path.join(process.cwd(), "public", "data", "prompt.json");
+  const data = fs.readFileSync(filePath, "utf-8");
+  return JSON.parse(data);
 }
+
+const prompt = loadPrompt();
 
 export async function POST(request: NextRequest) {
   try {
@@ -81,11 +68,24 @@ export async function POST(request: NextRequest) {
     try {
       const openai = new OpenAI({ apiKey });
 
+      const chefDescriptions = chefs.map(
+        (c) =>
+          `ID:${c.id} | ${c.name} | Cuisine: ${c.cuisine.join(", ")} | Experience: ${c.experience} yrs | Specialty: ${c.specialty.join(", ")} | Rating: ${c.rating}★ | Price: ${c.currency}${c.pricePerSession}/session | Bio: ${c.bio.replace(/[|"\\\n\r]/g, " ").trim()}`
+      ).join("\n");
+
+      const userMessage = prompt.user
+        .replace("{{cuisine}}", body.cuisine)
+        .replace("{{mealType}}", body.mealType)
+        .replace("{{guests}}", body.guests)
+        .replace("{{budget}}", body.budget)
+        .replace("{{specialRequest}}", body.specialRequest || "None")
+        .replace("{{chefs}}", chefDescriptions);
+
       const completion = await openai.chat.completions.create({
         model: "gpt-4o",
         messages: [
-          { role: "system", content: "You are a chef matching assistant. Always return valid JSON." },
-          { role: "user", content: buildPrompt(chefs, body) },
+          { role: "system", content: prompt.system },
+          { role: "user", content: userMessage },
         ],
         temperature: 0.3,
         response_format: { type: "json_object" },

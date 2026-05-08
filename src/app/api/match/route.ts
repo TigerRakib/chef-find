@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import OpenAI from "openai";
 import fs from "fs";
 import path from "path";
 
@@ -30,69 +31,30 @@ function loadChefs(): Chef[] {
   return JSON.parse(data);
 }
 
-function parseBudgetRange(budget: string): [number, number] {
-  const ranges: Record<string, [number, number]> = {
-    "500-1000": [500, 1000],
-    "1000-2000": [1000, 2000],
-    "2000-5000": [2000, 5000],
-    "5000+": [5000, 99999],
-  };
-  return ranges[budget] || [0, 99999];
-}
+function buildPrompt(chefs: Chef[], request: MatchRequest): string {
+  const chefDescriptions = chefs.map(
+    (c) =>
+      `ID:${c.id} | ${c.name} | Cuisine: ${c.cuisine.join(", ")} | Experience: ${c.experience} yrs | Specialty: ${c.specialty.join(", ")} | Rating: ${c.rating}★ | Price: ৳${c.pricePerSession}/session | Bio: ${c.bio}`
+  ).join("\n");
 
-function parseGuestCount(guests: string): [number, number] {
-  const ranges: Record<string, [number, number]> = {
-    "1-5": [1, 5],
-    "6-15": [6, 15],
-    "16-30": [16, 30],
-    "30+": [30, 999],
-  };
-  return ranges[guests] || [1, 999];
-}
+  return `You are a chef matching assistant. Given a customer's request, select the most relevant chefs from the list below.
 
-function scoreChef(chef: Chef, request: MatchRequest): number {
-  let score = 0;
+Customer Request:
+- Cuisine Preference: ${request.cuisine}
+- Meal Type: ${request.mealType}
+- Number of Guests: ${request.guests}
+- Budget: ${request.budget} BDT
+- Special Request: ${request.specialRequest || "None"}
 
-  const cuisineMatch = chef.cuisine.some((c) =>
-    c.toLowerCase().includes(request.cuisine.toLowerCase())
-  );
-  if (cuisineMatch) score += 40;
+Available Chefs:
+${chefDescriptions}
 
-  const [minBudget, maxBudget] = parseBudgetRange(request.budget);
-  if (chef.pricePerSession >= minBudget && chef.pricePerSession <= maxBudget) {
-    score += 25;
-  } else if (chef.pricePerSession < minBudget) {
-    score += 10;
-  }
+Return a JSON array of the top 3 most relevant chef IDs sorted by relevance (most relevant first). Include a "matchScore" (0-100) and a brief "matchReason" explaining why each chef is a good fit.
 
-  const [minGuests, maxGuests] = parseGuestCount(request.guests);
-  const guestRange = maxGuests - minGuests;
-  if (guestRange < 10 && chef.completedBookings > 100) score += 15;
-  if (guestRange >= 20 && chef.specialty.some((s) =>
-    s.toLowerCase().includes("large") || s.toLowerCase().includes("party") || s.toLowerCase().includes("catering")
-  )) {
-    score += 20;
-  }
+Format:
+{"matches":[{"id":1,"matchScore":95,"matchReason":"..."},{"id":2,"matchScore":80,"matchReason":"..."}]}
 
-  if (request.specialRequest) {
-    const lower = request.specialRequest.toLowerCase();
-    chef.specialty.forEach((s) => {
-      if (lower.includes(s.toLowerCase())) score += 15;
-    });
-    if (chef.bio.toLowerCase().includes(lower.split(" ")[0])) score += 10;
-  }
-
-  if (request.mealType.toLowerCase().includes("party") || request.mealType.toLowerCase().includes("catering")) {
-    if (chef.specialty.some((s) =>
-      s.toLowerCase().includes("party") || s.toLowerCase().includes("catering") || s.toLowerCase().includes("event")
-    )) {
-      score += 15;
-    }
-  }
-
-  score += chef.rating * 2;
-
-  return score;
+Return ONLY valid JSON, no markdown, no extra text.`;
 }
 
 export async function POST(request: NextRequest) {
@@ -107,14 +69,51 @@ export async function POST(request: NextRequest) {
     }
 
     const chefs = loadChefs();
+    const apiKey = process.env.OPENAI_API_KEY;
 
-    const scored = chefs.map((chef) => ({
-      ...chef,
-      matchScore: scoreChef(chef, body),
-    }));
+    if (!apiKey || apiKey === "your-openai-api-key-here") {
+      return NextResponse.json(
+        { error: "AI matching service is not configured. Please set a valid OPENAI_API_KEY." },
+        { status: 503 }
+      );
+    }
 
-    const sorted = scored.sort((a, b) => b.matchScore - a.matchScore);
-    return NextResponse.json(sorted.slice(0, 3));
+    try {
+      const openai = new OpenAI({ apiKey });
+
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+          { role: "system", content: "You are a chef matching assistant. Always return valid JSON." },
+          { role: "user", content: buildPrompt(chefs, body) },
+        ],
+        temperature: 0.3,
+        response_format: { type: "json_object" },
+      });
+
+      const content = completion.choices[0]?.message?.content;
+      if (content) {
+        const parsed = JSON.parse(content);
+        const matches: { id: number; matchScore: number }[] = parsed.matches || [];
+
+        const scoredChefs = matches
+          .map((m: { id: number; matchScore: number }) => {
+            const chef = chefs.find((c) => c.id === m.id);
+            if (!chef) return null;
+            return { ...chef, matchScore: m.matchScore };
+          })
+          .filter((c): c is Chef & { matchScore: number } => c !== null);
+
+        if (scoredChefs.length > 0) {
+          return NextResponse.json(scoredChefs);
+        }
+      }
+    } catch {
+      return NextResponse.json(
+        { error: "AI matching service is temporarily unavailable. Please try again later." },
+        { status: 503 }
+      );
+    }
   } catch {
     return NextResponse.json(
       { error: "Failed to process request" },

@@ -70,7 +70,8 @@ export function ChefForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to find matching chefs. Please try again.");
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || `Request failed with status ${response.status}`);
       }
 
       const data = await response.json();

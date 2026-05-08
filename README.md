@@ -44,7 +44,7 @@ chef-find/
 │       └── storage.ts            # LocalStorage utilities for preferences, history, favorites
 ├── public/
 │   └── data/
-│       └── chefs.json            # Chef data (100 chefs, editable without code changes)
+│       └── chefs.json            # Chef data (10 chefs, editable without code changes)
 ├── next.config.ts                # Next.js configuration
 ├── tsconfig.json                 # TypeScript configuration
 ├── package.json

@@ -6,7 +6,7 @@ ChefFind is a simple web page that connects you with verified personal chefs for
 
 ## Features
 
-- **100+ Sample Chefs** — Diverse global cuisines and specialized dietary expertise for complex matching
+- **10 Sample Chefs** — Diverse global cuisines and specialized dietary expertise for complex matching
 - **Smart Matching** — Advanced scoring algorithm ranks chefs by cuisine fit, budget, guest count, and special requests
 - **Persistent Preferences** — Default selections saved in LocalStorage for faster repeat searches
 - **Search History** — Quick access to past searches with one-click re-use
@@ -18,11 +18,12 @@ ChefFind is a simple web page that connects you with verified personal chefs for
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org) 16 — React framework (App Router)
-- [Tailwind CSS](https://tailwindcss.com) 4 — Utility-first styling
+- Next.js 16 — React framework (App Router)
+- Tailwind CSS 4 — Utility-first styling
 - TypeScript — Type safety
 - ESLint — Code quality
-- [Geist Font](https://vercel.com/font) — Typography
+- Geist Font — Typography
+- [Google Gemini API](https://ai.google.dev) — AI-powered chef matching (via OpenAI-compatible endpoint)
 
 ## Project Structure
 
@@ -44,7 +45,8 @@ chef-find/
 │       └── storage.ts            # LocalStorage utilities for preferences, history, favorites
 ├── public/
 │   └── data/
-│       └── chefs.json            # Chef data (10 chefs, editable without code changes)
+│       ├── chefs.json            # Chef data (10 chefs, editable without code changes)
+│       └── prompt.json           # Gemini prompt templates for chef matching
 ├── next.config.ts                # Next.js configuration
 ├── tsconfig.json                 # TypeScript configuration
 ├── package.json
@@ -60,6 +62,16 @@ Chef data is stored in `public/data/chefs.json` instead of being hardcoded in Ty
 - Clean separation of data and logic
 
 To add or modify chefs, edit `public/data/chefs.json` directly.
+
+### Prompt Template (JSON)
+The Gemini prompt used for chef matching is stored in `public/data/prompt.json`. It contains two templates:
+
+| Field   | Description |
+| ------- | ----------- |
+| `system` | System instruction setting the AI's role as a chef matching assistant |
+| `user`   | User message template with placeholders (`{{cuisine}}`, `{{mealType}}`, `{{guests}}`, `{{budget}}`, `{{specialRequest}}`, `{{chefs}}`) |
+
+You can customize the matching behavior by editing this file — modify scoring criteria, output format, or tone without changing code.
 
 ### LocalStorage (`src/lib/storage.ts`)
 Client side persistence for user specific data:
@@ -104,6 +116,16 @@ const favIds = getFavorites();
 - Node.js 18+
 - npm, yarn, pnpm, or bun
 
+### Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Get a free API key at [Google AI Studio](https://aistudio.google.com/apikey).
+
 ### Installation
 
 1. Clone the repository and navigate to the project directory:
@@ -137,19 +159,11 @@ npm run dev
 
 ## How Matching Works
 
-The `/api/match` endpoint uses a scoring algorithm to rank chefs:
+The `/api/match` endpoint uses **Google Gemini** (via the OpenAI-compatible SDK) to intelligently match chefs:
 
-| Criteria              | Max Points |
-| --------------------- | ---------- |
-| Cuisine match         | 40         |
-| Budget fit            | 25         |
-| Guest count suitability | 20       |
-| Meal type alignment   | 15         |
-| Special request match | 15         |
-| Bio keyword match     | 10         |
-| Rating bonus          | ~10        |
-
-The top 3 chefs are returned, sorted by match score.
+1. Sends the user's request (cuisine, meal type, guests, budget, special requests) along with all available chef profiles to Gemini
+2. Gemini evaluates each chef based on cuisine match, budget fit, specialty alignment, rating, and experience
+3. Returns the top 3 most relevant chefs with a match score (0–100) and a brief reason for each recommendation
 
 ## API Reference
 
@@ -184,10 +198,19 @@ Find matching chefs based on user preferences.
     "pricePerSession": 1500,
     "bio": "Born in Kolkata...",
     "completedBookings": 142,
-    "matchScore": 98
+    "matchScore": 98,
+    "matchReason": "Expert in traditional Bengali cuisine with extensive experience in fish curries and festival feasts."
   }
 ]
 ```
+
+**Error Responses:**
+
+| Status | Description |
+| ------ | ----------- |
+| `400`  | Missing required fields |
+| `503`  | AI service unavailable (rate limit or API key issue) |
+| `500`  | Internal server error |
 
 ## Deployment
 

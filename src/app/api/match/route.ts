@@ -56,17 +56,20 @@ export async function POST(request: NextRequest) {
     }
 
     const chefs = loadChefs();
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
 
-    if (!apiKey || apiKey === "your-openai-api-key-here") {
+    if (!apiKey) {
       return NextResponse.json(
-        { error: "AI matching service is not configured. Please set a valid OPENAI_API_KEY." },
+        { error: "AI matching service is not configured. Please set a valid GEMINI_API_KEY." },
         { status: 503 }
       );
     }
 
     try {
-      const openai = new OpenAI({ apiKey });
+      const openai = new OpenAI({
+        apiKey,
+        baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+      });
 
       const chefDescriptions = chefs.map(
         (c) =>
@@ -81,15 +84,30 @@ export async function POST(request: NextRequest) {
         .replace("{{specialRequest}}", body.specialRequest || "None")
         .replace("{{chefs}}", chefDescriptions);
 
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o",
-        messages: [
-          { role: "system", content: prompt.system },
-          { role: "user", content: userMessage },
-        ],
-        temperature: 0.3,
-        response_format: { type: "json_object" },
-      });
+      let completion: OpenAI.Chat.Completions.ChatCompletion | null = null;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          completion = await openai.chat.completions.create({
+            model: "gemini-2.5-flash",
+            messages: [
+              { role: "system", content: prompt.system },
+              { role: "user", content: userMessage },
+            ],
+            temperature: 0.3,
+          });
+          break;
+        } catch (e) {
+          if (attempt === 3 || !(e instanceof Error && e.message.includes("429"))) throw e;
+          await new Promise((r) => setTimeout(r, attempt * 2000));
+        }
+      }
+
+      if (!completion) {
+        return NextResponse.json(
+          { error: "AI matching service is temporarily unavailable. Please try again later." },
+          { status: 503 }
+        );
+      }
 
       const content = completion.choices[0]?.message?.content;
       if (content) {
@@ -108,9 +126,12 @@ export async function POST(request: NextRequest) {
           return NextResponse.json(scoredChefs);
         }
       }
-    } catch {
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unknown error";
+      console.error("Gemini API error:", message);
+      const isRateLimit = message.includes("429");
       return NextResponse.json(
-        { error: "AI matching service is temporarily unavailable. Please try again later." },
+        { error: isRateLimit ? "Too many requests. Please wait a moment and try again." : `AI service error: ${message}` },
         { status: 503 }
       );
     }

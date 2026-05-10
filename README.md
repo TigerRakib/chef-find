@@ -7,11 +7,11 @@ ChefFind is a simple web page that connects you with verified personal chefs for
 ## Features
 
 - **10 Sample Chefs** — Diverse global cuisines and specialized dietary expertise for complex matching
-- **Smart Matching** — Advanced scoring algorithm ranks chefs by cuisine fit, budget, guest count, and special requests
+- **AI Matching** — Gemini-powered matching ranks chefs by cuisine fit, budget, guest count, and special requests
 - **Persistent Preferences** — Default selections saved in LocalStorage for faster repeat searches
 - **Search History** — Quick access to past searches with one-click re-use
 - **Favorites System** — Save and manage your favorite chefs across sessions
-- **Diverse Cuisines** — Bengali, Chinese, Italian, Continental, BBQ, and 25+ global cuisines
+- **Diverse Cuisines** — Bengali, Chinese, Italian, Continental, BBQ.
 - **Flexible Pricing** — Options ranging from budget friendly family meals (৳500) to premium fine dining (৳10,000)
 - **Responsive Design** — Mobile-first UI with safe-area support for notched phones
 - **Modern UI** — Clean interface built with Next.js and Tailwind CSS

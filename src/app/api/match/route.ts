@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import fs from "fs";
-import path from "path";
+import chefsData from "@/../public/data/chefs.json";
+import promptData from "@/../public/data/prompt.json";
 
 interface Chef {
   id: number;
@@ -25,24 +25,8 @@ interface MatchRequest {
   specialRequest: string;
 }
 
-interface PromptTemplate {
-  system: string;
-  user: string;
-}
-
-function loadChefs(): Chef[] {
-  const filePath = path.join(process.cwd(), "public", "data", "chefs.json");
-  const data = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(data);
-}
-
-function loadPrompt(): PromptTemplate {
-  const filePath = path.join(process.cwd(), "public", "data", "prompt.json");
-  const data = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(data);
-}
-
-const prompt = loadPrompt();
+const chefs = chefsData as Chef[];
+const prompt = promptData as { system: string; user: string };
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,7 +39,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const chefs = loadChefs();
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {

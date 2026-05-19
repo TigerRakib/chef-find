@@ -28,6 +28,19 @@ interface MatchRequest {
 const chefs = chefsData as Chef[];
 const prompt = promptData as { system: string; user: string };
 
+function formatChefsForPrompt(chefList: Chef[]): string {
+  return JSON.stringify(
+    chefList.map((c) => ({
+      id: c.id,
+      c: c.cuisine,
+      s: c.specialty,
+      y: c.experience,
+      r: c.rating,
+      p: c.pricePerSession,
+    }))
+  );
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body: MatchRequest = await request.json();
@@ -54,10 +67,7 @@ export async function POST(request: NextRequest) {
         baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
       });
 
-      const chefDescriptions = chefs.map(
-        (c) =>
-          `ID:${c.id} | ${c.name} | Cuisine: ${c.cuisine.join(", ")} | Experience: ${c.experience} yrs | Specialty: ${c.specialty.join(", ")} | Rating: ${c.rating}★ | Price: ${c.currency}${c.pricePerSession}/session | Bio: ${c.bio.replace(/[|"\\\n\r]/g, " ").trim()}`
-      ).join("\n");
+      const chefDescriptions = formatChefsForPrompt(chefs);
 
       const userMessage = prompt.user
         .replace("{{cuisine}}", body.cuisine)

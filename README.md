@@ -7,7 +7,7 @@ ChefFind is a simple web page that connects you with verified personal chefs for
 ## Features
 
 - **10 Sample Chefs** — Diverse global cuisines and specialized dietary expertise for complex matching
-- **AI Matching** — Gemini-powered matching ranks chefs by cuisine fit, budget, guest count, and special requests
+- **AI Matching** — Gemini-powered matching ranks chefs by cuisine fit, budget, guest count, and special requests (compact prompts and chef payloads to reduce API tokens)
 - **Persistent Preferences** — Default selections saved in LocalStorage for faster repeat searches
 - **Search History** — Quick access to past searches with one-click re-use
 - **Favorites System** — Save and manage your favorite chefs across sessions
@@ -64,14 +64,34 @@ Chef data is stored in `public/data/chefs.json` instead of being hardcoded in Ty
 To add or modify chefs, edit `public/data/chefs.json` directly.
 
 ### Prompt Template (JSON)
-The Gemini prompt used for chef matching is stored in `public/data/prompt.json`. It contains two templates:
+The Gemini prompt is stored in `public/data/prompt.json` as two short templates (kept minimal to save input tokens):
 
 | Field   | Description |
 | ------- | ----------- |
-| `system` | System instruction setting the AI's role as a chef matching assistant |
-| `user`   | User message template with placeholders (`{{cuisine}}`, `{{mealType}}`, `{{guests}}`, `{{budget}}`, `{{specialRequest}}`, `{{chefs}}`) |
+| `system` | Brief role, scoring criteria (cuisine, budget, specialty, rating, experience), and JSON-only output |
+| `user`   | Compact request line plus chef list placeholder |
 
-You can customize the matching behavior by editing this file — modify scoring criteria, output format, or tone without changing code.
+**Placeholders:** `{{cuisine}}`, `{{mealType}}`, `{{guests}}`, `{{budget}}`, `{{specialRequest}}`, `{{chefs}}`
+
+The `{{chefs}}` value is injected by the API as minified JSON (see below), not as verbose text lines.
+
+**Model output:** `{"matches":[{"id":number,"matchScore":number}]}` — top 3 IDs with scores 0–100. The API merges scores with full profiles from `chefs.json` before responding to the client.
+
+Edit this file to tune scoring rules or tone without changing application code.
+
+### Compact Chef Payload (API)
+In `src/app/api/match/route.ts`, `formatChefsForPrompt()` sends only fields needed for ranking:
+
+| Key | Meaning |
+| --- | ------- |
+| `id` | Chef ID |
+| `c` | Cuisine tags |
+| `s` | Specialties |
+| `y` | Years of experience |
+| `r` | Rating |
+| `p` | Price per session (BDT) |
+
+Names, avatars, bios, and booking counts stay in `chefs.json` and are returned in the HTTP response after matching — they are not sent to Gemini. This cuts chef-list payload size by roughly 60% compared to the previous verbose line-per-chef format.
 
 ### LocalStorage (`src/lib/storage.ts`)
 Client side persistence for user specific data:
@@ -159,11 +179,15 @@ npm run dev
 
 ## How Matching Works
 
-The `/api/match` endpoint uses **Google Gemini** (via the OpenAI-compatible SDK) to intelligently match chefs:
+The `/api/match` endpoint uses **Google Gemini 2.5 Flash** (via the OpenAI-compatible SDK):
 
-1. Sends the user's request (cuisine, meal type, guests, budget, special requests) along with all available chef profiles to Gemini
-2. Gemini evaluates each chef based on cuisine match, budget fit, specialty alignment, rating, and experience
-3. Returns the top 3 most relevant chefs with a match score (0–100) and a brief reason for each recommendation
+1. Loads prompts from `public/data/prompt.json` and chef data from `public/data/chefs.json`
+2. Builds a compact JSON array of chefs (`id`, `c`, `s`, `y`, `r`, `p`) via `formatChefsForPrompt()`
+3. Sends a short user message (request + compact chef list) to Gemini
+4. Parses the model’s JSON (`matches` with `id` and `matchScore`)
+5. Returns the top 3 full chef records from `chefs.json`, each with a `matchScore` (0–100)
+
+Retries up to 3 times on rate-limit (`429`) errors with backoff.
 
 ## API Reference
 
@@ -183,23 +207,23 @@ Find matching chefs based on user preferences.
 }
 ```
 
-**Response:**
+**Response:** Full chef objects from `chefs.json` plus `matchScore` (up to 3 items).
 
 ```json
 [
   {
     "id": 1,
-    "name": "Rina Das",
-    "avatar": "👩‍🍳",
+    "name": "Chef Arif Rahman",
+    "avatar": "👨🏽‍🍳",
     "cuisine": ["Bengali"],
     "experience": 8,
-    "specialty": ["Traditional Bengali", "Fish Curries", "Festival Feasts"],
-    "rating": 4.9,
+    "specialty": ["Large Parties", "Event Catering", "Traditional Feasts"],
+    "rating": 4.8,
     "pricePerSession": 1500,
-    "bio": "Born in Kolkata...",
-    "completedBookings": 142,
-    "matchScore": 98,
-    "matchReason": "Expert in traditional Bengali cuisine with extensive experience in fish curries and festival feasts."
+    "currency": "BDT",
+    "bio": "Specializing in traditional Bengali feasts for large gatherings...",
+    "completedBookings": 86,
+    "matchScore": 98
   }
 ]
 ```
